@@ -15,6 +15,7 @@
                 <div class="col-md-6 col-lg-6 pt-3">
                     <input type="hidden" name="_method" value="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="user_id" value="{{ $data['profile']->user_id }}">
 
                     <div class="form-group">
                         <label class="form-label">Caption</label>
@@ -49,15 +50,43 @@
 
 <script>
 
-            function readURL(input) {
-				if (input.files && input.files[0]) {
-					var reader = new FileReader();
-					reader.onload = function (e) {
-						$('#img_preview').attr('src', e.target.result);
-					}
-					reader.readAsDataURL(input.files[0]);
-				}
+    function readURL(input) {
+	    if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('#img_preview').attr('src', e.target.result);
 			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+            $('#frmProfile').on('submit', function(e) {
+                e.preventDefault();
+                var data = new FormData(this);
+                data.append('_token', '{{ csrf_token() }}' );
+                $.ajax({
+					url: "{{ route('posts.store') }}",
+                    type: 'POST',
+					method: 'POST',
+					data: data,
+					cache: false,
+					contentType: false,
+					processData: false,
+					success: function(data){
+                        var myJSON = JSON.stringify(data);
+                        bootbox.alert("Update Picture Profile success", function(){
+                            window.location.href = "{{ route('finder.profile') }}";
+                        });
+                    },
+                    error: function (request, status, error) {
+                        var myJSON = JSON.stringify(request);
+                        alert(myJSON);
+                        bootbox.alert("Something goes wrong, please check again 2", function(){
+                            window.location.href = "{{ route('finder.profile') }}";
+                        });
+                    }
+                });
+            });
 
 </script>
 

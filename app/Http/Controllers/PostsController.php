@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Classes\PostsClasses;
+use App\Classes\UploadClasses;
 
 class PostsController extends Controller
 {
@@ -39,5 +40,35 @@ class PostsController extends Controller
         $data['caption'] = $request->input('caption_name');
         $data['text_currator'] = $request->input('text_currator');
         return $data;
+    }
+
+    public function store(Request $request)
+    {
+        $upload = new UploadClasses();
+        $today = date("Y-m-d H:i:s");
+        $filename = $_FILES['picture_profile']['name'];
+        $dataRegister['request'] = $today;
+        $dataRegister['token'] = Session::get('token');
+        $dataRegister['user_id'] = $request->input('id');
+        $dataRegister['caption'] = $request->input('caption');
+        $dataRegister['text_currator'] = $request->input('text_currator');
+        $dataRegister['filename'] = $filename;
+
+        if ($_FILES['picture_profile']['name']) {
+            // $file_name = $_FILES['picture_profile']['name'];
+            // $source = $_FILES['picture_profile']['tmp_name'];
+            $datax['string_img'] = base64_encode(file_get_contents($request->file('picture_profile')));
+            $datax['ext'] = $request->file('picture_profile')->getClientOriginalExtension();
+            $datax['user_id'] = $request->input('id');
+
+            $server_output = $upload->uploadImage($datax);
+            $datax = json_decode($server_output);
+
+            $data['status'] = $datax->status;
+            $data['message'] = $datax->message;
+            if ($datax->status == true) {
+                //
+            }
+        }
     }
 }
