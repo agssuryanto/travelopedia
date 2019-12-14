@@ -49,4 +49,5 @@ Route::group(['middleware' => 'cekstatus'], function () {
     Route::get('/finder/profile', 'HomeUserController@profile')->name('finder.profile');
     Route::get('/finder/personalinfo', 'HomeUserController@personalinfo')->name('finder.personalinfo');
     Route::get('/finder/posts', 'HomeUserController@posts')->name('finder.posts');
+    Route::post('/finder/store', 'HomeUserController@store')->name('finder.store');
 });

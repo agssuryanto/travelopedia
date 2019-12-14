@@ -26,6 +26,16 @@
                         <label class="form-label">Description</label>
                         <textarea class="form-control" rows="5" id="text_currator" name="text_currator"></textarea>
                     </div>
+
+                    <div class="form-group row">
+                        <div class="d-flex col-sm-12">
+                        <input type="hidden" class="form-control" id="latitude" name="latitude" />
+                        <input type="hidden" class="form-control" id="longitude" name="longitude" />
+                        <input type="hidden" class="form-control" id="ip_address" name="ip_address" />
+                        <input type="hidden" class="form-control" id="id" name="id" value="{{ $data['profile']->user_id }}" />
+                        </div>
+                    </div>
+
                 </div>
                 <div class="col-md-6 col-lg-6 pt-3">
                     <div class="form-group">
@@ -50,6 +60,17 @@
 
 <script>
 
+    window.addEventListener("load", function() {
+
+        $.getJSON('https://ipapi.co/json/', function(data) {
+                console.log(JSON.stringify(data, null, 2));
+                $("#latitude").val(data.latitude);
+                $("#longitude").val(data.longitude);
+                $("#ip_address").val(data.ip);
+            });
+
+    });
+
     function readURL(input) {
 	    if (input.files && input.files[0]) {
 			var reader = new FileReader();
@@ -65,7 +86,7 @@
                 var data = new FormData(this);
                 data.append('_token', '{{ csrf_token() }}' );
                 $.ajax({
-					url: "{{ route('posts.store') }}",
+					url: "{{ route('finder.store') }}",
                     type: 'POST',
 					method: 'POST',
 					data: data,
@@ -74,13 +95,15 @@
 					processData: false,
 					success: function(data){
                         var myJSON = JSON.stringify(data);
+                        // console.log(myJSON);
+                        // alert(myJSON);
                         bootbox.alert("Update Picture Profile success", function(){
-                            window.location.href = "{{ route('finder.profile') }}";
+                            window.location.href = "{{ route('finder.home') }}";
                         });
                     },
                     error: function (request, status, error) {
                         var myJSON = JSON.stringify(request);
-                        alert(myJSON);
+                        // alert(myJSON);
                         bootbox.alert("Something goes wrong, please check again 2", function(){
                             window.location.href = "{{ route('finder.profile') }}";
                         });

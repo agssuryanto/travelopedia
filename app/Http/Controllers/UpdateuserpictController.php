@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use File;
+use App\Classes\UploadClasses;
 
 class UpdateuserpictController extends Controller
 {
@@ -36,6 +37,8 @@ class UpdateuserpictController extends Controller
      */
     public function store(Request $request)
     {
+        $uploadImage = new UploadClasses();
+        
         $today = date("Y-m-d H:i:s");
         $filename = $_FILES['picture_profile']['name'];
 		$dataRegister['request'] = $today;
@@ -51,17 +54,17 @@ class UpdateuserpictController extends Controller
             $datax['ext'] = $request->file('picture_profile')->getClientOriginalExtension();
             $datax['user_id'] = $request->input('id');
 
-            $url = config('app.cdn')."/upload";
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $datax);
+            // $url = config('app.cdn')."/upload";
+            // $ch = curl_init();
+            // curl_setopt($ch, CURLOPT_URL, $url);
+            // curl_setopt($ch, CURLOPT_POST, 1);
+            // curl_setopt($ch, CURLOPT_POSTFIELDS, $datax);
 
-            // Receive server response ...
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $server_output = curl_exec($ch);
-            curl_close ($ch);
-
+            // // Receive server response ...
+            // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            // $server_output = curl_exec($ch);
+            // curl_close ($ch);
+            $server_output = $uploadImage->uploadImage($datax);
             $data['server_output'] = $server_output;
             $datax = json_decode($server_output);
 
