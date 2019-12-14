@@ -68,7 +68,7 @@
                     <a href="#"><i class="icon ion-md-search"></i></a>
                 </div>
                 <div class="footer-menu text-center">
-                    <a href="#"><i class="icon ion-md-add-circle-outline"></i></a>
+                    <a href="{{ route('finder.posts') }}"><i class="icon ion-md-add-circle-outline"></i></a>
                 </div>
                 <div class="footer-menu text-center">
                     <a href="#"><i class="icon ion-md-heart-empty"></i></a>

@@ -42,4 +42,10 @@ class HomeUserController extends Controller
         $data['provinces'] = $datax;
         return view('finder.personal', compact('data'));
     }
+
+    public function posts(Request $request)
+    {
+        $data['profile'] = Session::get('profile');
+        return view('finder.posts', compact('data'));
+    }
 }
