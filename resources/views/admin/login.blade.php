@@ -129,10 +129,11 @@
                 browser = "Others";
             }
 
-            $.getJSON('http://ip-api.com/json?callback=?', function(data) {
-                $("#latitude").val(data.lat);
-                $("#longitude").val(data.lon);
-                $("#ip_address").val(data.query);
+            $.getJSON('https://ipapi.co/json/', function(data) {
+                console.log(JSON.stringify(data, null, 2));
+                $("#latitude").val(data.latitude);
+                $("#longitude").val(data.longitude);
+                $("#ip_address").val(data.ip);
                 $("#net_info").val(JSON.stringify(data));
             });
 

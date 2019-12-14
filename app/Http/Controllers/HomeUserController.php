@@ -40,6 +40,10 @@ class HomeUserController extends Controller
         $datax = json_decode($server_output);
         $data['personal'] = json_decode($personal_info);
         $data['provinces'] = $datax;
+        // print "<pre>";
+        // print_r($data);
+        // print "</pre>";
+        // die;
         return view('finder.personal', compact('data'));
     }
 
