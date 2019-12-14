@@ -8,7 +8,11 @@
                 <h6>Edit Personal Information</h6>
                 <form id="frmPictureProfile" name="frmPictureProfile" enctype="multipart/form-data" >
                     {{ csrf_field() }}
-                    <img id="img_preview" src="{{ $data['profile']->avatar }}" class="rounded-image mt-3" style="max-width: 75px; max-height: 75px;" alt="profile image">
+                    <?php
+                        $profileImg = ( $data['profile']->avatar != '' ) ? $data['profile']->avatar : config('app.url')."/images/no_image_available.png";
+                    ?>
+
+                    <img id="img_preview" src="{{ $profileImg }}" class="rounded-image mt-3" style="max-width: 75px; max-height: 75px;" alt="profile image">
                     <br /><br />
                     <input onchange="readURL(this)" type="file" style="font-size: 12px;" id="picture_profile" name="picture_profile" class="col-xs-10 col-sm-5" accept="image/gif, image/jpeg, image/png">
                     <input type="hidden" id="id" name="id" value="<?php echo $data['profile']->user_id; ?>" />

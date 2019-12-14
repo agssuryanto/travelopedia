@@ -5,7 +5,10 @@
     <div class="container">
         <div class="row">
             <div class="col-4 text-center">
-                <img src="{{ $profile->avatar }}" class="profile-image rounded-image" alt="profile image">
+                <?php
+                    $profileImg = ( $profile->avatar != '' ) ? $profile->avatar : config('app.url')."/images/no_image_available.png";
+                ?>
+                <img src="<?php echo $profileImg; ?>" class="profile-image rounded-image" alt="profile image">
             </div>
             <div class="col-8 mx-auto pt-3 text-left">
                 <h4>{{ $profile->name }}</h4>

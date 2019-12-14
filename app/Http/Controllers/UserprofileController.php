@@ -24,11 +24,11 @@ class UserprofileController extends Controller
         $data['personal'] = json_decode($personal->getInfo($data['profile']->user_id));
         $data['provinces'] = $datax;
 
-        print $data['profile']->user_id;
-        print "<pre>";
-        print_r($data);
-        print "</pre>";
-        die;
+        // print $data['profile']->user_id;
+        // print "<pre>";
+        // print_r($data);
+        // print "</pre>";
+        // die;
 
         return view('admin/user-profile/index', compact('data'));
     }
