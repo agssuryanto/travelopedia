@@ -1,0 +1,22 @@
+
+stdClass Object
+(
+    [status] => 1
+    [message] => Update user data successfully
+    [data] => stdClass Object
+        (
+            [user_id] => 1
+            [name] => Agus Suryanto
+            [email] => ags.suryanto@gmail.com
+            [phone] => 085781003362
+            [avatar] => http://api-travel.doingfun.id/images/1238619069.jpg
+            [status] => 1
+            [role] => 1
+            [bio] => Hai, jalan-jalan enaknya pake travelopedia. Bikin perjalanan jadi mudah, enakkan ...
+            [password] => $2y$10$EN55eIQM29Vb9at6GwTSB.ZtaQ7oXUEczD.rvDBcdrP//zQ3ascE2
+            [role_id] => 1
+            [role_name] => Administrator
+        )
+
+)
+

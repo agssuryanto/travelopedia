@@ -1,0 +1,7 @@
+.dataTables_wrapper thead .sorting_asc:after, .dataTables_wrapper thead .sorting:after {
+    content: " " !important;
+}
+
+.dataTables_wrapper thead .sorting_asc:before, .dataTables_wrapper thead .sorting:before {
+    content: " " !important;
+}
