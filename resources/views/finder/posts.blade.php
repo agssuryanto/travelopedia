@@ -50,6 +50,7 @@
             <div class="row">
                 <div class="col-md-12 col-lg-12 pt-3">
                     <div class="form-footer">
+                        <img style="width: 300px; margin-top: -250px; margin-left: 30%; position: fixed; z-indoex: 1;" src="{{ config('app.url') }}/assets/images/loading-gear.gif" id="loading-gear" name="loading-gear" />                        
                         <button id="btnSubmit" name="btnSubmit" class="btn btn-primary btn-block">Update</button>
                     </div>
                 </div>
@@ -61,14 +62,13 @@
 <script>
 
     window.addEventListener("load", function() {
-
+        $('#loading-gear').hide();
         $.getJSON('https://ipapi.co/json/', function(data) {
                 console.log(JSON.stringify(data, null, 2));
                 $("#latitude").val(data.latitude);
                 $("#longitude").val(data.longitude);
                 $("#ip_address").val(data.ip);
             });
-
     });
 
     function readURL(input) {
@@ -92,11 +92,15 @@
 					data: data,
 					cache: false,
 					contentType: false,
-					processData: false,
+                    processData: false,
+                    beforeSend: function() {
+                        $('#loading-gear').show();
+                    },
 					success: function(data){
                         var myJSON = JSON.stringify(data);
                         // console.log(myJSON);
                         // alert(myJSON);
+                        $('#loading-gear').hide();
                         bootbox.alert("Update Picture Profile success", function(){
                             window.location.href = "{{ route('finder.home') }}";
                         });
@@ -104,6 +108,7 @@
                     error: function (request, status, error) {
                         var myJSON = JSON.stringify(request);
                         // alert(myJSON);
+                        $('#loading-gear').hide();
                         bootbox.alert("Something goes wrong, please check again 2", function(){
                             window.location.href = "{{ route('finder.profile') }}";
                         });
