@@ -351,7 +351,7 @@ body {font-family: Arial;}
 					processData: false,
 					success: function(data){
                         var myJSON = JSON.stringify(data);
-                        alert(myJSON);
+                        //alert(myJSON);
                         bootbox.alert("Update Picture Profile success", function(){
                             window.location.href = "{{ route('user_profile.index') }}";
                         });
