@@ -22,6 +22,22 @@ class HomeUserController extends Controller
         return view('finder.home', compact('data'));
     }
 
+    public function logs()
+    {
+        $logs = new LogClasses();
+
+        $data['profile'] = Session::get('profile');
+
+        $dataRegister['token'] = Session::get('token');
+        $dataRegister['user_id'] = $data['profile']->user_id;
+
+        $server_output = $logs->single_user_activity($dataRegister);
+        $data['log'] = json_decode($server_output);
+        
+        return view('finder.log', compact('data'));
+        
+    }
+
     public function profile()
     {
         $profile = Session::get('profile');

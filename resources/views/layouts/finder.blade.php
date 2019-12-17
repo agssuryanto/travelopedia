@@ -65,7 +65,7 @@
                     <a href="{{ route('finder.home') }}"><i class="icon ion-md-home"></i></a>
                 </div>
                 <div class="footer-menu text-center">
-                    <a href="#"><i class="icon ion-md-search"></i></a>
+                    <a href="{{ route('finder.log') }}"><i class="icon ion-md-search"></i></a>
                 </div>
                 <div class="footer-menu text-center">
                     <a href="{{ route('finder.posts') }}"><i class="icon ion-md-add-circle-outline"></i></a>
@@ -85,6 +85,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <!-- script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script -->
+    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
   </body>
 </html>
