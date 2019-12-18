@@ -95,7 +95,6 @@
                     return false;
                 }
 
-                var filex = $("#picture_profile").val();
                 if ($("#picture_profile").val() == '') {
                     alert('Pilih file yang ingin di upload!');
                     return false;
