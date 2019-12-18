@@ -33,7 +33,10 @@ class HomeUserController extends Controller
 
         $server_output = $logs->single_user_activity($dataRegister);
         $data['log'] = json_decode($server_output);
-        
+        // print "<pre>";
+        // print_r($data['log']);
+        // print "</pre>";
+        // die;
         return view('finder.log', compact('data'));
         
     }

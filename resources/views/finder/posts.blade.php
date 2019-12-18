@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col-md-12 col-lg-12 pt-3">
                     <div class="form-footer">
-                        <img style="width: 300px; margin-top: -250px; margin-left: 30%; position: fixed; z-indoex: 1;" src="{{ config('app.url') }}/assets/images/loading-gear.gif" id="loading-gear" name="loading-gear" />                        
+                        <img style="width: 300px; margin-top: -250px; margin-left: 30%; position: fixed; z-indoex: 1;" src="{{ config('app.url') }}/assets/images/loading-gear.gif" id="loading-gear" name="loading-gear" />
                         <button id="btnSubmit" name="btnSubmit" class="btn btn-primary btn-block">Update</button>
                     </div>
                 </div>
@@ -83,6 +83,24 @@
 
             $('#frmProfile').on('submit', function(e) {
                 e.preventDefault();
+                if ($("#caption").val() == '' ) {
+                    alert('Caption harus di isi!');
+                    $("#caption").setfocus();
+                    return false;
+                }
+
+                if ($("#text_currator").val() == '') {
+                    alert('Description harus di isi!');
+                    $("#text_currator").setfocus();
+                    return false;
+                }
+
+                var filex = $("#picture_profile").val();
+                if ($("#picture_profile").val() == '') {
+                    alert('Pilih file yang ingin di upload!');
+                    return false;
+                }
+
                 var data = new FormData(this);
                 data.append('_token', '{{ csrf_token() }}' );
                 $.ajax({
