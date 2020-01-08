@@ -51,4 +51,8 @@ Route::group(['middleware' => 'cekstatus'], function () {
     Route::get('/finder/posts', 'HomeUserController@posts')->name('finder.posts');
     Route::get('/finder/log', 'HomeUserController@logs')->name('finder.log');
     Route::post('/finder/store', 'HomeUserController@store')->name('finder.store');
+
+    Route::get('/expert/home', 'ExpertController@home')->name('expert.home');
+    Route::get('/expert/profile', 'ExpertController@profile')->name('expert.profile');
+    Route::get('/expert/personalinfo', 'ExpertController@personalinfo')->name('expert.personalinfo');
 });

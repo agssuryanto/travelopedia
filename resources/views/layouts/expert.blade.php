@@ -62,7 +62,7 @@
           <div class="container">
             <div class="d-flex">
                     <div class="pt-2">
-                        <a class="header-brand" href="{{ config('app.url') }}/user/home">
+                        <a class="header-brand" href="{{ config('app.url') }}/expert/home">
                             <img src="{{ asset('/images/logo/thumbnail_logoaja.png') }}" class="header-brand-img" alt="Travelomedia">
                             Travelomedia
                         </a>
@@ -91,7 +91,7 @@
                     </span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                    <a class="dropdown-item" href="{{ route('user.profile') }}">
+                    <a class="dropdown-item" href="{{ route('expert.profile') }}">
                       <i class="dropdown-icon fe fe-user"></i> Profile
                     </a>
                     <a class="dropdown-item" href="{{ route('changepassword.index') }}">

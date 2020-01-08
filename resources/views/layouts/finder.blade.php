@@ -65,7 +65,7 @@
                     <a href="{{ route('finder.home') }}"><i class="icon ion-md-home"></i></a>
                 </div>
                 <div class="footer-menu text-center">
-                    <a href="{{ route('finder.log') }}"><i class="icon ion-md-search"></i></a>
+                    <a href="{{ route('finder.log') }}"><i class="icon ion-md-time"></i></a>
                 </div>
                 <div class="footer-menu text-center">
                     <a href="{{ route('finder.posts') }}"><i class="icon ion-md-add-circle-outline"></i></a>
