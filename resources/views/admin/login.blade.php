@@ -71,7 +71,7 @@
                   </div>
                   <div class="form-footer">
                     <img style="width: 300px; margin-top: -250px; background-color: rgba(255,255,255,0.7); position: fixed; z-indoex: 1;" src="{{ config('app.url') }}/assets/images/loading-gear.gif" id="loading-gear" name="loading-gear" />
-                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>&nbsp;<a href="{{ config('app.url') }}" class="btn btn-secondary btn-block">Cancel</a>&nbsp;
                   </div>
                 </div>
                 <div class="text-center text-muted">

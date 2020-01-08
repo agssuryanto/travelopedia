@@ -100,7 +100,7 @@
 
         @foreach ( $data['popular']->locations as $post )
 
-          <div class="col-sm-6 col-xl-3">
+          <div class="col-sm-3 col-xl-3">
             <div class="card">
               <a href="#"><img class="card-img-top" src="{{ $post->image }}" alt={{ $post->caption }}></a>
               <div class="card-body d-flex flex-column">

@@ -1,12 +1,12 @@
 @extends('layouts.finder')
 @section('content')
 
+<div class="page">
 <div class="col-12">
 
                 <div class="card">
                   <div class="card-header">
-                  <h3 class="card-title">User Posts</h3>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <h6 class="card-title">User Log Activity</h6>
                   </div>
                   <div class="table-responsive">
                     <table class="table card-table table-vcenter text-nowrap datatable">
@@ -35,8 +35,14 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <script>
+                      require(['datatables', 'jquery'], function(datatable, $) {
+                      	    $('.datatable').DataTable();
+                      	  });
+                    </script>                    
                   </div>
                 </div>
               </div>
+            </div>
 
 @endsection

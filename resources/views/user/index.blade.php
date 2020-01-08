@@ -7,12 +7,9 @@
         <div class="col-lg-12 col-md-12">
 
             <?php
+                $profile = Session::get('profile');
                 print "<pre>";
                 print_r($profile);
-                print "</pre>";
-                $user_profile = $profile->personal;
-                print "<pre>";
-                print_r($user_profile);
                 print "</pre>";
             ?>
 

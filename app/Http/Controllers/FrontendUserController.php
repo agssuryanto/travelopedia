@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Classes\ProvinceClasses;
+use App\Classes\PersonalClasses;
 
 class FrontendUserController extends Controller
 {
@@ -93,14 +94,19 @@ class FrontendUserController extends Controller
     public function profile()
     {
         $profile = Session::get('profile');
-        $dataRegister['token'] = $profile->token;
+        $token = Session::get('token');
+        $dataRegister['token'] = $token;
+
         $province = new ProvinceClasses();
         $server_output = $province->getProvince($dataRegister['token']);
-        $data['server_output'] = $server_output;
         $datax = json_decode($server_output);
+
+        $personal = new PersonalClasses();
+        $data['personal'] = json_decode($personal->getInfo($profile->user_id));
         $data['profile'] = $profile;
         $data['provinces'] = $datax;
-        return view('user.profile', compact('profile', 'data'));
+
+        return view('user.profile', compact('profile', 'personal', 'token', 'data'));
     }
 
     public function register()

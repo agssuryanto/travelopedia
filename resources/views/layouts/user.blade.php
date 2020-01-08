@@ -58,12 +58,26 @@
   <body class="">
     <div class="page">
       <div class="flex-fill">
-        <div class="header py-4">
+        <div class="header">
           <div class="container">
             <div class="d-flex">
-              <a class="header-brand py-2" href="/admin/home">
-                <img src="{{ asset('/images/logo/thumbnail_logopanjang.png') }}" class="header-brand-img" alt="tabler logo">
-              </a>
+                    <div class="pt-2">
+                        <a class="header-brand" href="{{ config('app.url') }}/user/home">
+                            <img src="{{ asset('/images/logo/thumbnail_logoaja.png') }}" class="header-brand-img" alt="Travelomedia">
+                            Travelomedia
+                        </a>
+                    </div>
+                    <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                        <li class="nav-item dropdown">
+                            <a href="./form-elements.html" class="nav-link"><i class="fe fe-check-square"></i> Kesenian Tradisional</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./gallery.html" class="nav-link"><i class="fe fe-image"></i> Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./docs/index.html" class="nav-link"><i class="fe fe-file-text"></i> Documentation</a>
+                        </li>
+                    </ul>
               <div class="d-flex order-lg-2 ml-auto py-2">
                 <div class="dropdown">
                   <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
@@ -82,6 +96,10 @@
                     </a>
                     <a class="dropdown-item" href="{{ route('changepassword.index') }}">
                       <i class="dropdown-icon fe fe-settings"></i> Change Password
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                      <i class="dropdown-icon fe fe-clock"></i> Action History
                     </a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('logout.index') }}">

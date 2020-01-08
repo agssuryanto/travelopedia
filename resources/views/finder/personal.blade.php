@@ -17,7 +17,9 @@
                     <input onchange="readURL(this)" type="file" style="font-size: 12px;" id="picture_profile" name="picture_profile" class="col-xs-10 col-sm-5" accept="image/gif, image/jpeg, image/png">
                     <input type="hidden" id="id" name="id" value="<?php echo $data['profile']->user_id; ?>" />
                     <br /><br />
-                    <button style="width: 150px" id="btnSubmitFoto" name="btnSubmitFoto" class="btn btn-secondary btn-block"><i class="fe fe-camera"></i>&nbsp;Update Photo</button>
+                    <div class="d-flex row justify-content-center">
+                        <button style="width: 150px" id="btnSubmitFoto" name="btnSubmitFoto" class="btn btn-secondary btn-block"><i class="fe fe-camera"></i>&nbsp;Update Photo</button>
+                    </div>
                 </form>
             </div>
             <div class="col-8 mx-auto pt-3 text-left">
@@ -31,6 +33,8 @@
                         $district = ($info->district_id != '') ? $info->district_id : "0";
                         $subdistrict = ($info->subdistrict_id != '' ) ? $info->subdistrict_id : "0";
                         ?>
+
+                    @endforeach
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Name</label>
@@ -119,7 +123,7 @@
                                 </select>
                             </div>
                         </div>
-                    @endforeach
+
 
 
                     <div class="form-group row">

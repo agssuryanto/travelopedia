@@ -124,7 +124,7 @@
                     },
                     error: function (request, status, error) {
                         var myJSON = JSON.stringify(request);
-                        // alert(myJSON);
+                        alert(myJSON);
                         $('#loading-gear').hide();
                         bootbox.alert("Something goes wrong, please check again 2", function(){
                             window.location.href = "{{ route('finder.profile') }}";

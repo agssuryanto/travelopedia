@@ -9,8 +9,12 @@
       </h1>
       <?php
         $profile = Session::get('profile');
+        $token = Session::get('token');
         print "<pre>";
         print_r($profile);
+        print "</pre>";
+        print "<pre>";
+        print_r($token);
         print "</pre>";
       ?>
     </div>
