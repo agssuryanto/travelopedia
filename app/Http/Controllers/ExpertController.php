@@ -49,4 +49,21 @@ class ExpertController extends Controller
         $data['provinces'] = $datax;
         return view('expert.personal', compact('data'));
     }
+
+    public function trip()
+    {
+        $dataRegister['token'] = Session::get('token');
+        $data['profile'] = Session::get('profile');
+        return view('expert.trip', compact('data'));
+    }
+
+    public function create()
+    {
+        echo "Create Trip";
+    }
+
+    public function store(Request $request)
+    {
+        echo "Store";
+    }
 }

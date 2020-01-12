@@ -55,4 +55,7 @@ Route::group(['middleware' => 'cekstatus'], function () {
     Route::get('/expert/home', 'ExpertController@home')->name('expert.home');
     Route::get('/expert/profile', 'ExpertController@profile')->name('expert.profile');
     Route::get('/expert/personalinfo', 'ExpertController@personalinfo')->name('expert.personalinfo');
+    Route::get('/expert/trip', 'ExpertController@trip')->name('expert.trip');
+    Route::get('/expert/trip/create', 'ExpertController@create')->name('expert.create');
+    Route::get('/expert/trip/store', 'ExpertController@store')->name('expert.store');
 });

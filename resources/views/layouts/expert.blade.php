@@ -67,17 +67,17 @@
                             Travelomedia
                         </a>
                     </div>
-                    {{-- <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                    <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                         <li class="nav-item dropdown">
-                            <a href="./form-elements.html" class="nav-link"><i class="fe fe-check-square"></i> Kesenian Tradisional</a>
+                            <a href="{{ route('expert.trip') }}" class="nav-link"><i class="fe fe-check-square"></i> My Trip</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="./gallery.html" class="nav-link"><i class="fe fe-image"></i> Gallery</a>
                         </li>
                         <li class="nav-item">
                             <a href="./docs/index.html" class="nav-link"><i class="fe fe-file-text"></i> Documentation</a>
-                        </li>
-                    </ul> --}}
+                        </li> --}}
+                    </ul>
               <div class="d-flex order-lg-2 ml-auto py-2">
                 <div class="dropdown">
                   <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
