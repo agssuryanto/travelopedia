@@ -44,6 +44,9 @@
                                 </td>
                                 <td class="text-nowrap">';
                                 $sel = ( $key->status == "1" && $key->deleted == "0") ? "Active" : "InActive";
+                                if ( $key->deleted == "1") {
+                                    $sel .= " ( deleted )";
+                                }
                                 echo $sel;
                             print '
                                 </td>

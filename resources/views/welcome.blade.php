@@ -56,36 +56,36 @@
     <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
       <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-3 ml-auto pt-4">
+            <div class="col-lg-3 mx-auto pt-4">
                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                     <li class="nav-item dropdown">
                         <a href="{{ route("login.index") }}" class="nav-link" data-toggle="dropdown"> Login</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./index.html" class="nav-link"> Register</a>
+                        <a href="/register" class="nav-link"> Register</a>
                     </li>
                 </ul>
             </div>
           <div class="col-lg order-lg-first">
                 <div class="d-flex flex-row pt-4">
                     <div class="pt-2">
-                        <a class="header-brand" href="./index.html">
+                        <a class="header-brand" href="{{ config('app.url') }}">
                             <img src="{{ asset('/images/logo/thumbnail_logoaja.png') }}" class="header-brand-img" alt="Travelomedia">
                             Travelomedia
                         </a>
                     </div>
                     <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                         <li class="nav-item">
-                            <a href="./index.html" class="nav-link"><i class="fe fe-home"></i> Home</a>
+                            <a href="{{ config('app.url') }}" class="nav-link"><i class="fe fe-home"></i> Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="./form-elements.html" class="nav-link"><i class="fe fe-check-square"></i> Kesenian Tradisional</a>
+                            <a href="./form-elements.html" class="nav-link"><i class="fe fe-check-square"></i> Top Destination</a>
                         </li>
                         <li class="nav-item">
-                            <a href="./gallery.html" class="nav-link"><i class="fe fe-image"></i> Gallery</a>
+                            <a href="./gallery.html" class="nav-link"><i class="fe fe-image"></i> Recommended Places</a>
                         </li>
                         <li class="nav-item">
-                            <a href="./docs/index.html" class="nav-link"><i class="fe fe-file-text"></i> Documentation</a>
+                            <a href="./docs/index.html" class="nav-link"><i class="fe fe-phone"></i> Contact Us</a>
                         </li>
                     </ul>
                 </div>
@@ -165,21 +165,21 @@
                         initMap(koordinat[x][0], koordinat[x][1], koordinat[x][2], koordinat[x][3]);
                         x++;
                     }
-                , 5000);
+                , 5000000);
 
             });
 
-                function print_koordinat() {
-                    for (i=0;i<koordinat.length;i++){
-                        /*
-                        console.log(koordinat[i]);
-                        console.log('LAT : '+koordinat[i][0]);
-                        console.log('LONG : '+koordinat[i][1]);
-                        console.log('IMG : '+koordinat[i][2]);
-                        console.log('CAPTION : '+koordinat[i][3]);
-                        */
-                    }
-                }
+                // function print_koordinat() {
+                //     for (i=0;i<koordinat.length;i++){
+                //         /*
+                //         console.log(koordinat[i]);
+                //         console.log('LAT : '+koordinat[i][0]);
+                //         console.log('LONG : '+koordinat[i][1]);
+                //         console.log('IMG : '+koordinat[i][2]);
+                //         console.log('CAPTION : '+koordinat[i][3]);
+                //         */
+                //     }
+                // }
 
                 function getlocation()
                 {

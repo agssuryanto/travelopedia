@@ -58,4 +58,11 @@ Route::group(['middleware' => 'cekstatus'], function () {
     Route::get('/expert/trip', 'ExpertController@trip')->name('expert.trip');
     Route::get('/expert/trip/create', 'ExpertController@create')->name('expert.create');
     Route::get('/expert/trip/store', 'ExpertController@store')->name('expert.store');
+
+    Route::get('/narator/home', 'NarratorController@home')->name('narator.home');
+    Route::get('/narator/profile', 'NarratorController@profile')->name('narator.profile');
+    Route::get('/narator/personalinfo', 'NarratorController@personalinfo')->name('narator.personalinfo');
+    Route::get('/narator/posts', 'NarratorController@posts')->name('narator.posts');
+    Route::get('/narator/log', 'NarratorController@logs')->name('narator.log');
+    Route::post('/narator/store', 'NarratorController@store')->name('narator.store');
 });
