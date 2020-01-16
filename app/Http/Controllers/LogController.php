@@ -15,6 +15,10 @@ class LogController extends Controller
         $log = new LogClasses();
         $datax = $log->user_activity($dataRegister['token']);
         $data = json_decode($datax);
+        // print "<pre>";
+        // print_r($datax);
+        // print "</pre>";
+        // die;
         return view('admin.log.activity', compact('data'));
     }
 

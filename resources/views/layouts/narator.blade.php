@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <script src="{{ asset('/assets/js/vendors/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('/assets/js/bootbox.min.js') }}"></script>
+    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/adapters/jquery.js') }}"></script>
 
     <title>{{ config('app.name') }}</title>
     <style>

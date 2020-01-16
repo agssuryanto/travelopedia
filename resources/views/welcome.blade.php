@@ -105,7 +105,7 @@
               <a href="#"><img class="card-img-top" src="{{ $post->image }}" alt={{ $post->caption }}></a>
               <div class="card-body d-flex flex-column">
                 <h4>{{ $post->caption }}</h4>
-                <a href="/" class="text-default">More info ...</a>
+                <a href="{{ config('app.url') }}/getinfo/{{ $post->post_id }}" class="text-default">More info ...</a>
                 <!-- div class="text-muted">{{ $post->text_currator }}</div -->
                 <div class="d-flex align-items-center pt-5 mt-auto">
                   <div class="avatar avatar-md mr-3" style="background-image: url({{ $post->avatar }})"></div>

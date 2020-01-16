@@ -6,8 +6,7 @@ use Session;
 use Illuminate\Http\Request;
 use App\Classes\ProvinceClasses;
 use App\Classes\PersonalClasses;
-use App\Classes\PostsClasses;
-use App\Classes\UploadClasses;
+use App\Classes\NaratorClasses;
 use App\Classes\LogClasses;
 
 class NarratorController extends Controller
@@ -17,8 +16,9 @@ class NarratorController extends Controller
     {
         $data['profile'] = Session::get('profile');
         $dataRegister['token'] = Session::get('token');
-        $post = new PostsClasses();
-        $server_output = $post->getUserPosts($dataRegister['token'], $data['profile']->user_id);
+        $dataRegister['user_id'] = $data['profile']->user_id;
+        $post = new NaratorClasses();
+        $server_output = $post->single_user_activity($dataRegister);
         $data['posts'] = json_decode($server_output);
         return view('narator.home', compact('data'));
     }
@@ -58,5 +58,33 @@ class NarratorController extends Controller
         $data['personal'] = json_decode($personal_info);
         $data['provinces'] = $datax;
         return view('narator.personal', compact('data'));
+    }
+
+    public function detail($id)
+    {
+        $data['profile'] = Session::get('profile');
+        $dataRegister['token'] = Session::get('token');
+        $dataRegister['id'] = $id;
+        $post = new NaratorClasses();
+        $server_output = $post->single_narasi($dataRegister);
+        $data['posts'] = json_decode($server_output);
+        // print "<pre>";
+        // print_r($data);
+        // print "</pre>";
+        // die;
+        return view('narator.detail', compact('data'));
+    }
+
+    public function store(Request $request)
+    {
+        $dataNarasi['user_id'] = $request->input('user_id');
+        $dataNarasi['narasi_id'] = $request->input('narasi_id');
+        $dataNarasi['posts_id'] = $request->input('posts_id');
+        $dataNarasi['tags'] = $request->input('tags');
+        $dataNarasi['wysiwyg'] = $request->input('wysiwyg');
+        $post = new NaratorClasses();
+        $server_output = $post->post_narasi($dataNarasi);
+        $data['posts'] = json_decode($server_output);
+        return response()->json($data);
     }
 }
