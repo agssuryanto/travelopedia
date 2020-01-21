@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends($layouts)
 @section('content')
 
 <?php
@@ -14,7 +14,7 @@ $profile = Session::get('profile');
         </div>
         <div class="card-body">
             <form id="frmProfile" name="frmProfile">
-                {{ csrf_field() }}																					
+                {{ csrf_field() }}
                 <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
@@ -46,14 +46,14 @@ $('#frmProfile').on('submit', function(e) {
     e.preventDefault();
 
     if ( $('#current').val() == '' || $('#new_password').val() == '' || $('#confirm_new_password').val() == '' ) {
-        bootbox.alert("Enter all parameters", function(){ 
+        bootbox.alert("Enter all parameters", function(){
             $('#current').focus();
         });
         return false;
     }
 
     if ( $('#confirm_new_password').val() != $('#new_password').val() ) {
-        bootbox.alert("Your password don't match", function(){ 
+        bootbox.alert("Your password don't match", function(){
             $('#current').focus();
         });
         return false;
@@ -69,30 +69,30 @@ $('#frmProfile').on('submit', function(e) {
 		contentType: false,
 		processData: false,
 		success: function(data){
-            var myJSON = JSON.stringify(data);   
+            var myJSON = JSON.stringify(data);
             if ( data != '' ) {
                 if ( data['status'] == true ) {
-                    bootbox.alert("Update data success! <br /> You need to re-login", function(){ 
+                    bootbox.alert("Update data success! <br /> You need to re-login", function(){
                     });
-                    window.location.href = "{{ route('logout.index') }}";  
+                    window.location.href = "{{ route('logout.index') }}";
                 } else {
-                    bootbox.alert("Invalid current password!!", function(){ 
+                    bootbox.alert("Invalid current password!!", function(){
                     });
-                    window.location.href = "{{ route('changepassword.index') }}";      
-                }                  
+                    window.location.href = "{{ route('changepassword.index') }}";
+                }
             } else {
-                bootbox.alert("Something goes wrong, please check again 1", function(){ 
-                    window.location.href = "{{ route('changepassword.index') }}";                    
-                });				
+                bootbox.alert("Something goes wrong, please check again 1", function(){
+                    window.location.href = "{{ route('changepassword.index') }}";
+                });
             }
         },
         error: function (request, status, error) {
             var myJSON = JSON.stringify(request);
             //alert(myJSON);
-            bootbox.alert("Something goes wrong, please check again 2", function(){ 
-                window.location.href = "{{ route('changepassword.index') }}";                    
-            });											
-        }                                        
+            bootbox.alert("Something goes wrong, please check again 2", function(){
+                window.location.href = "{{ route('changepassword.index') }}";
+            });
+        }
     });
 });
 

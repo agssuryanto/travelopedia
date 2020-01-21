@@ -1,4 +1,4 @@
-@extends('layouts.welcome')
+@extends($layouts)
 @section('content')
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
+use App\Classes\LocationClasses;
 use App\Classes\ProvinceClasses;
 use App\Classes\PersonalClasses;
 
@@ -88,7 +89,10 @@ class FrontendUserController extends Controller
     public function home()
     {
         $profile = Session::get('profile');
-        return view('user.index', compact('profile'));
+        $location = new LocationClasses();
+        $data['posts'] = json_decode($location->getLocation());
+        $data['popular'] = json_decode($location->getPopular());
+        return view('user.index', compact('profile', 'data'));
     }
 
     public function profile()

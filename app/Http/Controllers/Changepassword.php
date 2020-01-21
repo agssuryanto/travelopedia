@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +16,13 @@ class Changepassword extends Controller
      */
     public function index()
     {
-        return view('admin/user-profile/changepassword');
+        $profile = Session::get('profile');
+        if ($profile->role == "1") {
+            $layouts = "layouts.admin";
+        } else {
+            $layouts = "layouts.user";
+        }
+        return view('admin/user-profile/changepassword', compact('layouts'));
     }
 
     /**
@@ -77,20 +84,19 @@ class Changepassword extends Controller
         $dataRegister['token'] = Session::get('token');
         $dataRegister['current'] = $profile->password;
         $dataRegister['ori_current'] = $request->input('current');
-        $url = config('app.api')."/change_password";
+        $url = config('app.api') . "/change_password";
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $dataRegister);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);        
-        $server_output = curl_exec($ch);        
-        curl_close ($ch);        
-    
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $server_output = curl_exec($ch);
+        curl_close($ch);
+
         $data['server_output'] = $server_output;
         $datax = json_decode($server_output);
-    
-        return response()->json($datax);
 
+        return response()->json($datax);
     }
 
     /**

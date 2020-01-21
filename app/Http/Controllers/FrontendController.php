@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Classes\LocationClasses;
 use App\Classes\NaratorClasses;
 
@@ -14,10 +15,6 @@ class FrontendController extends Controller
         $location = new LocationClasses();
         $data['posts'] = json_decode($location->getLocation());
         $data['popular'] = json_decode($location->getPopular());
-        // print "<pre>";
-        // print_r($data);
-        // print "</pre>";
-        // die;
         if ($data['posts'] != '') {
             return view('welcome', compact('data'));
         } else {
@@ -32,12 +29,22 @@ class FrontendController extends Controller
 
     public function getinfo($id)
     {
+        $role = "0";
+        $profile = Session::get('profile');
+        if ($profile) {
+            $role = $profile->role;
+        }
+        if ($role == "1") {
+            $layouts = "layouts.admin";
+        } elseif ($role == "2") {
+            $layouts = "layouts.user";
+        } else {
+            $layouts = "layouts.welcome";
+        }
+
         $info = new NaratorClasses();
         $dataRegister['id'] = $id;
         $data['posts'] = json_decode($info->getinfo($dataRegister));
-        // print "<pre>";
-        // print_r($data);
-        // print "</pre>";
-        return view('postinfo', compact('data'));
+        return view('postinfo', compact('data', 'layouts'));
     }
 }

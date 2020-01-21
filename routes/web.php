@@ -64,6 +64,7 @@ Route::group(['middleware' => 'cekstatus'], function () {
     Route::get('/narator/profile', 'NarratorController@profile')->name('narator.profile');
     Route::get('/narator/personalinfo', 'NarratorController@personalinfo')->name('narator.personalinfo');
     Route::get('/narator/detail/{id}', 'NarratorController@detail')->name('narator.detail');
+    Route::get('/narator/create/{id}', 'NarratorController@create')->name('narator.create');
     Route::get('/narator/posts', 'NarratorController@posts')->name('narator.posts');
     Route::get('/narator/log', 'NarratorController@logs')->name('narator.log');
     Route::post('/narator/store', 'NarratorController@store')->name('narator.store');

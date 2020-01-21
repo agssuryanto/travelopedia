@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="{{ asset('/assets/js/vendors/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/popper.js') }}"></script>
     <script src="{{ asset('/assets/js/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ asset('/assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/assets/js/bootbox.min.js') }}"></script>
@@ -54,6 +55,13 @@
     <script src="{{ asset('/assets/plugins/input-mask/plugin.js') }}"></script>
     <!-- Datatables Plugin -->
     <script src="{{ asset('/assets/plugins/datatables/plugin.js') }}"></script>
+
+    <style>
+      #map {
+        height: 80%;
+      }
+    </style>
+
   </head>
   <body class="">
     <div class="page">
@@ -67,45 +75,48 @@
                             Travelomedia
                         </a>
                     </div>
-                    {{-- <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                    <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                        <li class="nav-item">
+                            <a href="{{ config('app.url') }}/user/home" class="nav-link"><i class="fe fe-home"></i> Home</a>
+                        </li>
                         <li class="nav-item dropdown">
-                            <a href="./form-elements.html" class="nav-link"><i class="fe fe-check-square"></i> Kesenian Tradisional</a>
+                            <a href="./form-elements.html" class="nav-link"><i class="fe fe-check-square"></i> Top Destination</a>
                         </li>
                         <li class="nav-item">
-                            <a href="./gallery.html" class="nav-link"><i class="fe fe-image"></i> Gallery</a>
+                            <a href="./gallery.html" class="nav-link"><i class="fe fe-image"></i> Recommended Places</a>
                         </li>
                         <li class="nav-item">
-                            <a href="./docs/index.html" class="nav-link"><i class="fe fe-file-text"></i> Documentation</a>
+                            <a href="./docs/index.html" class="nav-link"><i class="fe fe-phone"></i> Contact Us</a>
                         </li>
-                    </ul> --}}
-              <div class="d-flex order-lg-2 ml-auto py-2">
+                    </ul>
+              <div class="d-flex order-lg-2 ml-auto pt-2">
                 <div class="dropdown">
-                  <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                    <?php
-                      $avatar = ( $profile->avatar != '' ) ? $profile->avatar : config('app.url').'/assets/images/user.png' ;
-                    ?>
-                    <span class="avatar" style="background-image: url(<?php echo $avatar; ?>)"></span>
-                    <span class="ml-2 d-none d-lg-block">
-                      <span class="text-default">{{ $profile->name }}</span>
-                      <small class="text-muted d-block mt-1"><div id="role" name="role"></div></small>
-                    </span>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                    <a class="dropdown-item" href="{{ route('user.profile') }}">
-                      <i class="dropdown-icon fe fe-user"></i> Profile
+                    <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+                        <?php
+                            $avatar = ( $profile->avatar != '' ) ? $profile->avatar : config('app.url').'/assets/images/user.png' ;
+                        ?>
+                        <span class="avatar" style="background-image: url(<?php echo $avatar; ?>)"></span>
+                        <span class="ml-2 d-none d-lg-block">
+                            <span class="text-default">{{ $profile->name }}</span>
+                            <small class="text-muted d-block mt-1"><div id="role" name="role"></div></small>
+                        </span>
                     </a>
-                    <a class="dropdown-item" href="{{ route('changepassword.index') }}">
-                      <i class="dropdown-icon fe fe-settings"></i> Change Password
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                      <i class="dropdown-icon fe fe-clock"></i> Action History
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ route('logout.index') }}">
-                      <i class="dropdown-icon fe fe-log-out"></i> Sign out
-                    </a>
-                  </div>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                        <a class="dropdown-item" href="{{ route('user.profile') }}">
+                            <i class="dropdown-icon fe fe-user"></i> Profile
+                        </a>
+                        <a class="dropdown-item" href="{{ route('changepassword.index') }}">
+                            <i class="dropdown-icon fe fe-settings"></i> Change Password
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                            <i class="dropdown-icon fe fe-clock"></i> Action History
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ route('logout.index') }}">
+                            <i class="dropdown-icon fe fe-log-out"></i> Sign out
+                        </a>
+                    </div>
                 </div>
               </div>
               <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
