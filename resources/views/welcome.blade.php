@@ -250,7 +250,7 @@
             }
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ config('app.google') }}&callback=initMap" async defer></script>
 
   </body>
 </html>
