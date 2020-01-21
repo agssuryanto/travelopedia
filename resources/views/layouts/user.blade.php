@@ -86,7 +86,7 @@
                             <a href="./gallery.html" class="nav-link"><i class="fe fe-image"></i> Recommended Places</a>
                         </li>
                         <li class="nav-item">
-                            <a href="./docs/index.html" class="nav-link"><i class="fe fe-phone"></i> Contact Us</a>
+                            <a href="/contact" class="nav-link"><i class="fe fe-phone"></i> Contact Us</a>
                         </li>
                     </ul>
               <div class="d-flex order-lg-2 ml-auto pt-2">

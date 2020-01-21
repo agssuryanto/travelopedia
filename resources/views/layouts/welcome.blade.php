@@ -73,7 +73,7 @@
                             <a href="./gallery.html" class="nav-link"><i class="fe fe-image"></i> Recommended Places</a>
                         </li>
                         <li class="nav-item">
-                            <a href="./docs/index.html" class="nav-link"><i class="fe fe-phone"></i> Contact Us</a>
+                            <a href="/contact" class="nav-link"><i class="fe fe-phone"></i> Contact Us</a>
                         </li>
                     </ul>
                 </div>
@@ -85,7 +85,7 @@
     @yield("content")
 
 
-      <footer class="footer">
+      <footer class="footer" style="position: fixed; bottom: 0; width: 100%;">
         <div class="container">
           <div class="row align-items-center flex-row-reverse">
             <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">

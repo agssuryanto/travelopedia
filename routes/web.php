@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', 'FrontendController@index');
+Route::get('/contact', 'FrontendController@contact');
 Route::get('/getinfo/{id}', 'FrontendController@getinfo');
 Route::get('/login', 'FrontendUserController@index');
 Route::get('/register', 'FrontendUserController@register');
