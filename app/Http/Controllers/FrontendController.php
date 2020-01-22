@@ -6,6 +6,7 @@ use Session;
 use App\Classes\LocationClasses;
 use App\Classes\NaratorClasses;
 use App\Classes\PostsClasses;
+use App\Classes\TripClasses;
 
 class FrontendController extends Controller
 {
@@ -16,6 +17,7 @@ class FrontendController extends Controller
         $location = new LocationClasses();
         $data['posts'] = json_decode($location->getLocation());
         $data['popular'] = json_decode($location->getPopular());
+
         if ($data['posts'] != '') {
             return view('welcome', compact('data'));
         } else {
@@ -49,11 +51,17 @@ class FrontendController extends Controller
         $dataRegister['id'] = $id;
         $data['posts'] = json_decode($info->getinfo($dataRegister));
         $data['accomodation'] = json_decode($accomodation->get_accomodation($dataRegister));
+
+        $trip = new TripClasses();
+        $dataRegister['trip_id'] = $id;
+        $data['trip'] = json_decode($trip->trip_detail($dataRegister));
+
         // print "<pre>";
         // print_r($data);
         // print "</pre>";
         // die;
-        return view('postinfo', compact('data', 'layouts'));
+        // return view('postinfo', compact('data', 'layouts'));
+        return view('postinfo2', compact('data', 'layouts'));
     }
 
     public function contact()
