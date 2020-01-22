@@ -9,6 +9,7 @@ use App\Classes\PersonalClasses;
 use App\Classes\PostsClasses;
 use App\Classes\UploadClasses;
 use App\Classes\LogClasses;
+use App\Classes\ExpertClasses;
 
 class ExpertController extends Controller
 {
@@ -17,19 +18,28 @@ class ExpertController extends Controller
     {
         $data['profile'] = Session::get('profile');
         $dataRegister['token'] = Session::get('token');
-        $post = new PostsClasses();
-        $server_output = $post->getUserPosts($dataRegister['token'], $data['profile']->user_id);
+        $expert = new ExpertClasses();
+        $server_output = $expert->getUserPosts($dataRegister['token'], $data['profile']->user_id);
         $data['posts'] = json_decode($server_output);
         return view('expert.home', compact('data'));
+    }
+
+    public function detail($id)
+    {
+        $dataRegister['token'] = Session::get('token');
+        $expert = new ExpertClasses();
+        $server_output = $expert->trip_detail($dataRegister['token'], $id);
+        $data['posts'] = json_decode($server_output);
+        // print "<pre>";
+        // print_r($data);
+        // print "</pre>";
+        // die;
+        return view('expert.detail', compact('data'));
     }
 
     public function profile()
     {
         $profile = Session::get('profile');
-        // print "<pre>";
-        // print_r($profile);
-        // print "</pre>";
-        // die;
         return view('expert.profile', compact('profile'));
     }
 
@@ -52,8 +62,11 @@ class ExpertController extends Controller
 
     public function trip()
     {
-        $dataRegister['token'] = Session::get('token');
         $data['profile'] = Session::get('profile');
+        $dataRegister['token'] = Session::get('token');
+        $expert = new ExpertClasses();
+        $server_output = $expert->getUserPosts($dataRegister['token'], $data['profile']->user_id);
+        $data['posts'] = json_decode($server_output);
         return view('expert.trip', compact('data'));
     }
 

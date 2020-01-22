@@ -19,6 +19,12 @@ class Changepassword extends Controller
         $profile = Session::get('profile');
         if ($profile->role == "1") {
             $layouts = "layouts.admin";
+        } elseif ($profile->role == "2") {
+            $layouts = "layouts.user";
+        } elseif ($profile->role == "3") {
+            $layouts = "layouts.finder";
+        } elseif ($profile->role == "4") {
+            $layouts = "layouts.expert";
         } else {
             $layouts = "layouts.user";
         }

@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h3>New Posts</h3>
+                <h3>Edit Posts</h3>
             </div>
         </div>
     </div>
@@ -15,16 +15,16 @@
                 <div class="col-md-8 col-lg-8 pt-3">
                     <input type="hidden" name="_method" value="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" name="user_id" value="{{ $data['profile']->user_id }}">
+                    <input type="hidden" name="posts_id" value="{{ $data['post']->posts[0]->id }}">
 
                     <div class="form-group">
                         <label class="form-label">Caption</label>
-                        <input class="form-control" id="caption" name="caption" placeholder="caption" />
+                        <input class="form-control" id="caption" name="caption" placeholder="caption" value="{{ $data['post']->posts[0]->caption }}" />
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Description</label>
-                        <textarea class="form-control" rows="5" id="wysiwyg" name="wysiwyg"></textarea>
+                        <textarea class="form-control" rows="5" id="wysiwyg" name="wysiwyg">{{ $data['post']->posts[0]->text_currator }}</textarea>
                     </div>
 
                     <div class="form-group row">
@@ -39,10 +39,9 @@
                 </div>
                 <div class="col-md-4 col-lg-4 pt-3">
                     <div class="form-group">
-                        <img id="img_preview" src="{{ asset('images/preview.jpg') }}" style="max-width: 250px; max-height: 250px;" alt="profile image">
+                        <img id="img_preview" src="{{ $data['post']->posts[0]->image }}" style="max-width: 250px; max-height: 250px;" alt="profile image">
                         <br /><br />
                         <input onchange="readURL(this)" type="file" style="font-size: 12px;" id="picture_profile" name="picture_profile" class="col-xs-10 col-sm-5" accept="image/gif, image/jpeg, image/png">
-                        <input type="hidden" id="id" name="id" value="<?php echo $data['profile']->user_id; ?>" />
                         <br /><br />
                     </div>
                 </div>
@@ -103,16 +102,11 @@
                     return false;
                 }
 
-                if ($("#picture_profile").val() == '') {
-                    alert('Pilih file yang ingin di upload!');
-                    return false;
-                }
-
                 var data = new FormData(this);
                 data.append('_token', '{{ csrf_token() }}' );
                 data.append('text_currator', content );
                 $.ajax({
-					url: "{{ route('finder.store') }}",
+					url: "{{ route('finder.update') }}",
                     type: 'POST',
 					method: 'POST',
 					data: data,
@@ -133,11 +127,16 @@
                     },
                     error: function (request, status, error) {
                         var myJSON = JSON.stringify(request);
-                        alert(myJSON);
+                        // console(myJSON);
+                        // alert(myJSON);
                         $('#loading-gear').hide();
-                        bootbox.alert("Something goes wrong, please check again 2", function(){
-                            window.location.href = "{{ route('finder.profile') }}";
+                        // bootbox.alert("Something goes wrong, please check again 2", function(){
+                        //     window.location.href = "{{ route('finder.home') }}";
+                        // });
+                        bootbox.alert("Update Picture Profile success", function(){
+                            window.location.href = "{{ route('finder.home') }}";
                         });
+
                     }
                 });
             });

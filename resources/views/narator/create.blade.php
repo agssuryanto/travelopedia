@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <textarea class="form-control" id="wysiwyg" name="wysiwyg"></textarea>
+                <textarea class="form-control" id="wysiwyg" name="wysiwyg">{{ $datax->text_currator }}</textarea>
             </div>
         </div>
         <div class="row">

@@ -51,13 +51,17 @@ Route::group(['middleware' => 'cekstatus'], function () {
     Route::get('/finder/profile', 'HomeUserController@profile')->name('finder.profile');
     Route::get('/finder/personalinfo', 'HomeUserController@personalinfo')->name('finder.personalinfo');
     Route::get('/finder/posts', 'HomeUserController@posts')->name('finder.posts');
+    Route::post('/finder/posts', 'HomeUserController@posts')->name('finder.update');
+    Route::get('/finder/edit/{id}', 'HomeUserController@edit')->name('finder.edit');
     Route::get('/finder/log', 'HomeUserController@logs')->name('finder.log');
     Route::post('/finder/store', 'HomeUserController@store')->name('finder.store');
+    Route::post('/finder/update', 'HomeUserController@update')->name('finder.update');
 
     Route::get('/expert/home', 'ExpertController@home')->name('expert.home');
     Route::get('/expert/profile', 'ExpertController@profile')->name('expert.profile');
     Route::get('/expert/personalinfo', 'ExpertController@personalinfo')->name('expert.personalinfo');
     Route::get('/expert/trip', 'ExpertController@trip')->name('expert.trip');
+    Route::get('/expert/trip/detail/{id}', 'ExpertController@detail')->name('trip.detail');
     Route::get('/expert/trip/create', 'ExpertController@create')->name('expert.create');
     Route::get('/expert/trip/store', 'ExpertController@store')->name('expert.store');
 
